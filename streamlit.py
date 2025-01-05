@@ -46,27 +46,27 @@ if uploaded_file is not None:
 
             # Model Overview
             elif options == "Model":
-                st.subheader("Model Decision Tree")
+    st.subheader("Model Decision Tree")
 
-                # Data Preparation
-                X = df.drop(columns=['target'])
-                Y = df['target']
+    # Data Preparation
+    X = df.drop(columns=['target'])
+    Y = df['target']
 
-                # Normalization
-                scaler = MinMaxScaler()
-                X_scaled = scaler.fit_transform(X)
+    # Normalization
+    scaler = MinMaxScaler()
+    X_scaled = scaler.fit_transform(X)
 
-                # Train-Test Split
-                X_train, X_test, y_train, y_test = train_test_split(X_scaled, Y, test_size=0.2, random_state=0)
+    # Train-Test Split
+    X_train, X_test, y_train, y_test = train_test_split(X_scaled, Y, test_size=0.2, random_state=0)
 
-                # Model Initialization and Training
-                dt = DecisionTreeClassifier(criterion='entropy', random_state=0, max_depth=6)
-                dt.fit(X_train, y_train)
+    # Model Initialization and Training
+    dt = DecisionTreeClassifier(criterion='entropy', random_state=0, max_depth=6)
+    dt.fit(X_train, y_train)
 
-                # Predictions and Evaluation
-                dt_predicted = dt.predict(X_test)
-                dt_acc_score = accuracy_score(y_test, dt_predicted)
+    # Predictions and Evaluation
+    dt_predicted = dt.predict(X_test)
+    dt_acc_score = accuracy_score(y_test, dt_predicted)
 
-                st.write(f"### Akurasi Model Decision Tree: {dt_acc_score * 100:.2f} %")
-                st.write("### Laporan Klasifikasi")
-                st.text(classification_report(y
+    st.write(f"### Akurasi Model Decision Tree: {dt_acc_score * 100:.2f} %")
+    st.write("### Laporan Klasifikasi")
+    st.text(classification_report(y_test, dt_predicted))  # Corrected Line
