@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-import warnings
+
 
 # Hide warnings
 warnings.filterwarnings('ignore')
