@@ -1,6 +1,6 @@
-import numpy as np
+import pandas as pd
 import streamlit as st
-
+import warnings  # Menambahkan import warnings
 
 # Hide warnings
 warnings.filterwarnings('ignore')
@@ -87,29 +87,4 @@ elif options == "Confusion Matrix":
     fig, ax = plt.subplots(figsize=(8, 6))
     sns.heatmap(dt_conf_matrix, annot=True, fmt='d', cmap='Blues', ax=ax)
     ax.set_title("Confusion Matrix - Model Decision Tree")
-    ax.set_xlabel("Hasil Prediksi Target")
-    ax.set_ylabel("Target Asli")
-    st.pyplot(fig)
-
-# Decision Tree Visualization
-elif options == "Visualisasi Pohon Keputusan":
-    st.subheader("Visualisasi Pohon Keputusan")
-    
-    # Data Preparation
-    X = df.drop(columns=['target'])
-    Y = df['target']
-    
-    scaler = MinMaxScaler()
-    X_scaled = scaler.fit_transform(X)
-    
-    X_train, X_test, y_train, y_test = train_test_split(X_scaled, Y, test_size=0.2, random_state=0)
-    
-    dt = DecisionTreeClassifier(criterion='entropy', random_state=0, max_depth=6)
-    dt.fit(X_train, y_train)
-    
-    # Plotting Decision Tree
-    st.write("### Pohon Keputusan")
-    fig, ax = plt.subplots(figsize=(40,20))
-    plot_tree(dt, filled=True, feature_names=X.columns, class_names=['Tidak Memiliki Penyakit Jantung', 'Memiliki Penyakit Jantung'], ax=ax)
-    st.pyplot(fig)
-
+    ax.set_xlabel("
