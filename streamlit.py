@@ -87,4 +87,6 @@ elif options == "Confusion Matrix":
     fig, ax = plt.subplots(figsize=(8, 6))
     sns.heatmap(dt_conf_matrix, annot=True, fmt='d', cmap='Blues', ax=ax)
     ax.set_title("Confusion Matrix - Model Decision Tree")
-    ax.set_xlabel("
+    ax.set_xlabel("Hasil Prediksi Target")  # Memperbaiki kesalahan di sini
+    ax.set_ylabel("Target Asli")
+    st.pyplot(fig)
