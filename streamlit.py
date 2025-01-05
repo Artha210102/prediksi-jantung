@@ -14,24 +14,12 @@ uploaded_file = st.file_uploader("Pilih file CSV", type=["csv"])
 if uploaded_file is not None:
     df = pd.read_csv(uploaded_file)
 
-    st.write("### Kolom pada Dataset")
-    st.write(df.columns)
-
-    # Clean column names
-    df.columns = df.columns.str.strip().str.lower()
-
-    # Check for target column
-    if 'target' not in df.columns:
-        st.write("Kolom 'target' tidak ditemukan dalam dataset.")
-        target_column = st.sidebar.selectbox("Pilih Kolom Target:", df.columns)
-    else:
-        target_column = 'target'
-
-    st.write(f"Kolom Target yang Dipilih: {target_column}")
-    X = df.drop(columns=[target_column])
-    Y = df[target_column]
-
-   
+    # Sidebar Navigation
+    st.sidebar.header("Navigasi")
+    options = st.sidebar.radio(
+        "Pilih Halaman:",
+        ["Dataset", "Model", "Confusion Matrix", "Visualisasi Pohon Keputusan"]
+    )
 
     # Dataset Overview
     if options == "Dataset":
