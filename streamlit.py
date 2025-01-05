@@ -12,30 +12,26 @@ st.title("Prediksi Penyakit Jantung dengan Decision Tree")
 uploaded_file = st.file_uploader("Pilih file CSV", type=["csv"])
 
 if uploaded_file is not None:
-    try:
-        df = pd.read_csv(uploaded_file)
-        # Check if 'target' column exists
-        if 'target' not in df.columns:
-            st.error("Error: Kolom 'target' tidak ditemukan dalam dataset. Pastikan file CSV yang diunggah memiliki kolom 'target'.")
-        else:
-            # Sidebar Navigation
-            st.sidebar.header("Navigasi")
-            options = st.sidebar.radio(
-                "Pilih Halaman:",
-                ["Dataset", "Model", "Confusion Matrix", "Visualisasi Pohon Keputusan"]
-            )
+    df = pd.read_csv(uploaded_file)
 
-            # Dataset Overview
-            if options == "Dataset":
-                st.subheader("Dataset")
-                st.write("### Informasi Data")
-                st.write(df.head())
-                st.write("### Deskripsi Data")
-                st.write(df.describe())
-                st.write("### Info Data")
-                st.write(df.info())
-                st.write("### Nilai yang Hilang")
-                st.write(df.isnull().sum())
+    # Sidebar Navigation
+    st.sidebar.header("Navigasi")
+    options = st.sidebar.radio(
+        "Pilih Halaman:",
+        ["Dataset", "Model", "Confusion Matrix", "Visualisasi Pohon Keputusan"]
+    )
+
+    # Dataset Overview
+    if options == "Dataset":
+        st.subheader("Dataset")
+        st.write("### Informasi Data")
+        st.write(df.head())
+        st.write("### Deskripsi Data")
+        st.write(df.describe())
+        st.write("### Info Data")
+        st.write(df.info())
+        st.write("### Nilai yang Hilang")
+        st.write(df.isnull().sum())
 
     # Model Overview
     elif options == "Model":
