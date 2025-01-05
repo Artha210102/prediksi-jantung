@@ -1,12 +1,6 @@
 import pandas as pd
 import streamlit as st
-import warnings
-import seaborn as sns
-import matplotlib.pyplot as plt
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier, plot_tree
-from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
+import numpy as np
 
 # Hide warnings
 warnings.filterwarnings('ignore')
