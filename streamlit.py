@@ -45,7 +45,7 @@ if uploaded_file is not None:
                 st.write(df.isnull().sum())
 
             # Model Overview
-            elif options == "Model":
+           elif options == "Model":
     st.subheader("Model Decision Tree")
 
     # Data Preparation
@@ -69,4 +69,5 @@ if uploaded_file is not None:
 
     st.write(f"### Akurasi Model Decision Tree: {dt_acc_score * 100:.2f} %")
     st.write("### Laporan Klasifikasi")
-    st.text(classification_report(y_test, dt_predicted))  # Corrected Line
+    st.text(classification_report(y_test, dt_predicted))
+
